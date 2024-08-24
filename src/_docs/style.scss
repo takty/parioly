@@ -2,7 +2,7 @@
  * Styles for Sample
  *
  * @author Takuto Yanagida
- * @version 2024-08-22
+ * @version 2024-08-24
  */
 
 @use 'sass:math';
@@ -27,7 +27,9 @@ main {
 	}
 
 	canvas {
-		width : var(--w);
-		height: var(--h);
+		aspect-ratio: 1;
+
+		width : min(100%, var(--w));
+		height: auto;
 	}
 }
