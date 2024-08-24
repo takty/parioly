@@ -2,10 +2,39 @@
  * Pattern Generator
  *
  * @author Takuto Yanagida
- * @version 2024-08-23
+ * @version 2024-08-24
  */
 
-import { Dice } from 'src/dice';
+import { hash } from './src/hash';
+import { Dice, DeterministicDice } from './src/dice';
+
+export function drawRandomly(ctx: CanvasRenderingContext2D, str: string, divX: number = 3, divY: number = 3) {
+	const d = new DeterministicDice(hash(str));
+
+	const w = ctx.canvas.width;
+	const h = ctx.canvas.height;
+
+	const cw = w / divX;
+	const ch = h / divY;
+
+	drawCellsRandomly(d, ctx, cw, ch);
+}
+
+export function drawRegularly(ctx: CanvasRenderingContext2D, str: string, divX: number = 3, divY: number = 3) {
+	const d = new DeterministicDice(hash(str));
+
+	const w = ctx.canvas.width;
+	const h = ctx.canvas.height;
+
+	const cw = w / divX;
+	const ch = h / divY;
+
+	drawCellsRegularly(d, ctx, cw, ch, w, h);
+}
+
+
+// -----------------------------------------------------------------------------
+
 
 const colorPairs = [
 	['RoyalBlue', 'Pink'],
@@ -57,7 +86,10 @@ const shapeTypes = [
 
 export const shapeTypeSize = shapeTypes.length;
 
-export function drawRotCells(d: Dice, ctx: CanvasRenderingContext2D, cwo: number, cho: number, cw: number, ch: number, w: number, h: number) {
+export function drawCellsRegularly(d: Dice, ctx: CanvasRenderingContext2D, cw: number, ch: number, w: number, h: number) {
+	const cwo = cw / 2;
+	const cho = ch / 2;
+
 	const rs = [d.rand(3), d.rand(3)];
 	const sts = [d.rand(shapeTypeSize - 1), d.rand(shapeTypeSize - 1), d.rand(shapeTypeSize - 1)];
 	const cps = [d.rand(colorPairSize - 1), d.rand(colorPairSize - 1), d.rand(colorPairSize - 1)];
@@ -88,7 +120,10 @@ export function drawRotCells(d: Dice, ctx: CanvasRenderingContext2D, cwo: number
 	drawCell(ctx, rs[2], sts[2], cps[2]);
 }
 
-export function drawRandomCells(d: Dice, ctx: CanvasRenderingContext2D, cwo: number, cw: number, cho: number, ch: number) {
+export function drawCellsRandomly(d: Dice, ctx: CanvasRenderingContext2D, cw: number, ch: number) {
+	const cwo = cw / 2;
+	const cho = ch / 2;
+
 	for (let t = 0; t < 3; t += 1) {
 		for (let s = 0; s < 3; s += 1) {
 			ctx.save();

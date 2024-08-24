@@ -6,31 +6,20 @@
  */
 
 import 'klales/klales.min.css';
-import { DeterministicDice } from '../dice';
-import { hash } from '../hash';
 import * as Parioly from '../../parioly';
 
 document.addEventListener('DOMContentLoaded', () => {
-	const hashStr = document.querySelector('#hash') as HTMLInputElement;
+	const hash = document.querySelector('#hash') as HTMLInputElement;
 	const run = document.querySelector('#run') as HTMLButtonElement;
 	const can = document.querySelector('canvas') as HTMLCanvasElement;
 
-	if (!hashStr || !run || !can) return;
+	if (can && run && hash) {
+		const ctx = can.getContext('2d') as CanvasRenderingContext2D;
 
-	const ctx = can.getContext('2d') as CanvasRenderingContext2D;
-	const w = can.width;
-	const h = can.height;
-
-	const cw = w / 3;
-	const ch = h / 3;
-	const cwo = cw / 2;
-	const cho = ch / 2;
-
-	run.addEventListener('click', () => {
-		const d = new DeterministicDice(hash(hashStr.value));
-
-		// Parioly.drawRotCells(d, ctx, cwo, cho, cw, ch, w, h);
-		Parioly.drawRandomCells(d, ctx, cwo, cw, cho, ch);
-	});
-	run.click();
+		run.addEventListener('click', () => {
+			Parioly.drawRandomly(ctx, hash.value);
+			// Parioly.drawRegularly(ctx, hashStr.value);
+		});
+		run.click();
+	}
 });
