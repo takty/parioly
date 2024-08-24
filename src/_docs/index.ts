@@ -2,13 +2,13 @@
  * Script for Sample
  *
  * @author Takuto Yanagida
- * @version 2024-08-23
+ * @version 2024-08-24
  */
 
 import 'klales/klales.min.css';
 import { DeterministicDice } from '../dice';
 import { hash } from '../hash';
-import * as Parioli from '../../parioli';
+import * as Parioly from '../../parioly';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const hashStr = document.querySelector('#hash') as HTMLInputElement;
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	run.addEventListener('click', () => {
 		const d = new DeterministicDice(hash(hashStr.value));
 
-		// Parioli.drawRotCells(d, ctx, cwo, cho, cw, ch, w, h);
-		Parioli.drawRandomCells(d, ctx, cwo, cw, cho, ch);
+		// Parioly.drawRotCells(d, ctx, cwo, cho, cw, ch, w, h);
+		Parioly.drawRandomCells(d, ctx, cwo, cw, cho, ch);
 	});
 	run.click();
 });

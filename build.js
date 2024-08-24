@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
 
 await build({
-	entryPoints : ['parioli.ts'],
+	entryPoints : ['parioly.ts'],
 	outdir      : 'dist',
 	outExtension: { '.js': '.min.js', '.css': '.min.css' },
 	minify      : true,

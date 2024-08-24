@@ -1,11 +1,11 @@
 {
-	"name": "parioli",
+	"name": "parioly",
 	"version": "1.0.0",
 	"description": "Color Library",
 	"license": "MIT",
 	"author": "Takuto Yanagida",
 	"type": "module",
-	"homepage": "https://github.com/takty/parioli#readme",
+	"homepage": "https://github.com/takty/parioly#readme",
 	"keywords": [
 		"js",
 		"css",
@@ -14,10 +14,10 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/takty/parioli.git"
+		"url": "git+https://github.com/takty/parioly.git"
 	},
 	"bugs": {
-		"url": "https://github.com/takty/parioli/issues"
+		"url": "https://github.com/takty/parioly/issues"
 	},
 	"browserslist": [
 		"> 1%",
@@ -37,6 +37,6 @@
 		"klales": "github:takty/klales",
 		"sass": "^1.77.8",
 		"typescript": "^5.5.4",
-		"vite": "^5.4.1"
+		"vite": "^5.4.2"
 	}
 }
